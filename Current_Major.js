@@ -1,60 +1,55 @@
 let arr_i = 0;
-let arr = ["C", "c", "Ç", "č", "C", "©"];
-let arr2 = ["U", "u", "v", "U", "u", "u"];
+let arr = ["C", "c", "Ç", "C", "Ç", "©"];
+let arr2 = ["Ú", "u", "Ü", "U", "u", "v"];
 let arr3 = ["r", "R", "r", "r", "R", "R"];
-let arr4 = ["i", "I", "1", "i", "1", "i"];
-let arr5 = ["0", "o", "8", "o", "0", "O"];
-let arr6 = ["s", "S", "s", "s", "S", "s"];
-let arr7 = ["i", "!", "i", "1", "I", "1"];
-let arr8 = ["t", "T", "T", "T", "t", "t"];
-let arr9 = ["y", "Y", "y", "y", "Y", "y"];
-let SLOW_DELAY = 1000;
+let arr4 = ["í", "I", "1", "i", "1", "i"];
+let arr5 = ["O", "o", "8", "ö", "0", "ó"];
+let arr6 = ["s", "§", "s", "S", "$", "S"];
+let arr7 = ["i", "!", "i", "1", "I", "í"];
+let arr8 = ["t", "T", "t", "T", "t", "T"];
+let arr9 = ["y", "Y", "ý", "y", "Y", "ý"];
+let SLOW_DELAY = 800;
 let FAST_DELAY = 8000;
 let DELAY_INCREMENT = 20;
 let delay = SLOW_DELAY;
 let nextTime;
 let state = 1;
-let clickedOnLetter = false;
-
-
+let clickedLetter = false;
 let bellFont, drukFont, robotoFont, timesNewRomanFont, copperFont, fitFont, helveticaFont, matrixFont, gtAmericaFont;
 let positions = []; 
 
 function preload() {
-  bellFont = loadFont('data/Bell_MT.ttf'); // font for 'o'
-  drukFont = loadFont('data/DrukWide-Heavy-Trial.otf'); // font for 'u'
-  robotoFont = loadFont('data/Uchen-Regular.ttf'); // font for 'r'
-  timesNewRomanFont = loadFont('data/LEMONMILK-LightItalic.otf'); // for the first 'i'
-  fitFont = loadFont('data/Pixellari.ttf'); // font for 's'
-  helveticaFont = loadFont('data/Misoka.ttf'); // font for the second 'i'
-  matrixFont = loadFont('data/Akzidenz-grotesk-roman.ttf'); // font for 't'
-  gtAmericaFont = loadFont('data/ALBAS___.TTF'); // font for 'y'
-  copperFont = loadFont('data/Copperplate_Gothic_Bold_Regular.ttf'); // font for 'c'
+  bellFont = loadFont('data/Bell_MT.ttf'); // for 'o'
+  drukFont = loadFont('data/DrukWide-Heavy-Trial.otf'); // for 'u'
+  robotoFont = loadFont('data/Uchen-Regular.ttf'); // for 'r'
+  timesNewRomanFont = loadFont('data/LEMONMILK-LightItalic.otf'); // for 'i'
+  fitFont = loadFont('data/Pixellari.ttf'); // for 's'
+  helveticaFont = loadFont('data/Misoka.ttf'); // for 'i' 2
+  matrixFont = loadFont('data/Akzidenz-grotesk-roman.ttf'); // for 't'
+  gtAmericaFont = loadFont('data/ALBAS___.TTF'); // for 'y'
+  copperFont = loadFont('data/Copperplate_Gothic_Bold_Regular.ttf'); // for 'c'
 }
 
 function setup() {
   createCanvas(1910, 919);
-  
-  // Calculate positions for each letter
   calculateLetterPositions();
-  
   nextTime = millis() + delay;
 }
 
 function draw() {
-  if (clickedOnLetter) {
-    background('black'); // Change the background to black when a letter is clicked
-    fill('#0f0'); // Green text for "You have been hacked"
-    textSize(20); // Set the text size
-    textFont(fitFont); // Use the preloaded Pixellari font (fitFont)
-    textAlign(LEFT, TOP); // Align the text to the top left
-    text("you have been hacked", 10, 10); // Display the message in the top-left corner
+  if (clickedLetter) {
+    background('black'); 
+    fill('#0f0'); 
+    textSize(20); 
+    textFont(fitFont); 
+    textAlign(LEFT, TOP); 
+    text("you have been hacked", 10, 10); 
     text("codewords", 1805, 10);
     fill('#0f0');
     textSize(20);
     textFont(fitFont);
     textAlign(RIGHT, TOP);
-    return; // Stop further drawing
+    return;
   }
 
   background('white');
@@ -71,8 +66,8 @@ function draw() {
       }
     }
 
-    arr_i++; // the index of next pattern
-    arr_i %= arr.length; // loop back to the start when reaching the end
+    arr_i++; 
+    arr_i %= arr.length;
     nextTime = millis() + delay;
   }
 
@@ -81,65 +76,59 @@ function draw() {
   noStroke();
   fill("black");
 
-  // Display current patterns in a horizontal line with font switching
   let patterns = [arr, arr2, arr3, arr4, arr5, arr6, arr7, arr8, arr9];
   
   for (let i = 0; i < patterns.length; i++) {
     let char = patterns[i][arr_i];
-    applyFontForChar(char, i); // Apply font based on the character and position
-    text(char, positions[i], height / 2); // Use fixed positions
+    applyFontForChar(char, i); 
+    text(char, positions[i], height / 2);
   }
 }
 
-// Function to switch between fonts based on the character
 function applyFontForChar(char, index) {
   if (char.toLowerCase() === 'c') {
-    textFont(copperFont); // Apply Copper font for 'c'
+    textFont(copperFont); // for 'c'
   } else if (char.toLowerCase() === 'o') {
-    textFont(bellFont); // Apply Bell font for 'o'
+    textFont(bellFont); // for 'o'
   } else if (char.toLowerCase() === 'u') {
-    textFont(drukFont); // Apply Druk for 'u'
+    textFont(drukFont); // for 'u'
   } else if (char.toLowerCase() === 'r') {
-    textFont(robotoFont); // Apply Roboto for 'r'
+    textFont(robotoFont); // for 'r'
   } else if (char.toLowerCase() === 's') {
-    textFont(fitFont); // Apply Fit for 's'
+    textFont(fitFont); // for 's'
   } else if (char.toLowerCase() === 't') {
-    textFont(matrixFont); // Apply Matrix for 't'
+    textFont(matrixFont); // for 't'
   } else if (char.toLowerCase() === 'y') {
-    textFont(gtAmericaFont); // Apply GT America for 'y'
+    textFont(gtAmericaFont); // for 'y'
   } else if (char.toLowerCase() === 'i') {
     if (index === 0) {
-      textFont(timesNewRomanFont); // Apply Times New Roman for first 'i'
+      textFont(timesNewRomanFont); // for 'i'
     } else {
-      textFont(helveticaFont); // Apply Helvetica for the second 'i'
+      textFont(helveticaFont); // for 'i' 2
     }
   } else {
-    textFont(bellFont); // Default font is Bell
+    textFont(bellFont);
   }
 }
 
-// Function to calculate fixed positions for each letter
 function calculateLetterPositions() {
   let totalWidth = 0;
   let patterns = [arr, arr2, arr3, arr4, arr5, arr6, arr7, arr8, arr9];
-  
-  // Measure the width of each letter to calculate total width
   let widths = [];
   for (let i = 0; i < patterns.length; i++) {
-    let char = patterns[i][0]; // Use the first character for width calculation
-    applyFontForChar(char, i); // Set font for each character
+    let char = patterns[i][0]; 
+    applyFontForChar(char, i); 
     let charWidth = textWidth(char);
-    widths.push(charWidth); // Store width for later use
-    totalWidth += charWidth; // Sum the width of each character
+    widths.push(charWidth); 
+    totalWidth += charWidth; 
   }
 
-  // Calculate equal spacing based on total width
-  let xOffset = (width - totalWidth) / (patterns.length + 1); // Extra space for equal distribution
-  let startX = xOffset; // Starting position on the X-axis
+ 
+  let xOffset = (width - totalWidth) / (patterns.length + 1); 
+  let startX = xOffset;
 
-  // Calculate fixed positions based on widths and offsets
   for (let i = 0; i < patterns.length; i++) {
-    positions[i] = startX + xOffset * i + widths[i] * i; // Store fixed position
+    positions[i] = startX + xOffset * i + widths[i] * i;
   }
 }
 
@@ -151,10 +140,10 @@ function mousePressed() {
     let charY = height / 2;
     let charWidth = textWidth(patterns[i][arr_i]);
     
-    // Check if the mouse was pressed on a character
+    
     if (mouseX > charX - charWidth / 2 && mouseX < charX + charWidth / 2 &&
-        mouseY > charY - 50 && mouseY < charY + 50) { // Assuming a text size of ~100
-      clickedOnLetter = true; // Set flag to change screen to black and show message
+        mouseY > charY - 50 && mouseY < charY + 50) { 
+      clickedLetter = true;
     }
   }
 }
