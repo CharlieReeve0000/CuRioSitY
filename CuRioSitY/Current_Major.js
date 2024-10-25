@@ -15,18 +15,18 @@ let delay = SLOW_DELAY;
 let nextTime;
 let state = 1;
 let clickedLetter = false;
-let bellFont, drukFont, robotoFont, timesNewRomanFont, copperFont, fitFont, helveticaFont, matrixFont, gtAmericaFont;
+let bellFont, drukFont, uchenFont, lemonFont, copperFont, pixFont, misokaFont, akzFont, albas;
 let positions = []; 
 
 function preload() {
   bellFont = loadFont('data/Bell_MT.ttf'); // for 'o'
   drukFont = loadFont('data/DrukWide-Heavy-Trial.otf'); // for 'u'
-  robotoFont = loadFont('data/Uchen-Regular.ttf'); // for 'r'
-  timesNewRomanFont = loadFont('data/LEMONMILK-LightItalic.otf'); // for 'i'
-  fitFont = loadFont('data/Pixellari.ttf'); // for 's'
-  helveticaFont = loadFont('data/Misoka.ttf'); // for 'i' 2
-  matrixFont = loadFont('data/Akzidenz-grotesk-roman.ttf'); // for 't'
-  gtAmericaFont = loadFont('data/ALBAS___.TTF'); // for 'y'
+  uchenFont = loadFont('data/Uchen-Regular.ttf'); // for 'r'
+  lemonFont = loadFont('data/LEMONMILK-LightItalic.otf'); // for 'i'
+  pixFont = loadFont('data/Pixellari.ttf'); // for 's'
+  misokaFont = loadFont('data/Misoka.ttf'); // for 'i' 2
+  akzFont = loadFont('data/Akzidenz-grotesk-roman.ttf'); // for 't'
+  albasFont = loadFont('data/ALBAS___.TTF'); // for 'y'
   copperFont = loadFont('data/Copperplate_Gothic_Bold_Regular.ttf'); // for 'c'
 }
 
@@ -41,13 +41,13 @@ function draw() {
     background('black'); 
     fill('#0f0'); 
     textSize(20); 
-    textFont(fitFont); 
+    textFont(pixFont); 
     textAlign(LEFT, TOP); 
     text("you have been hacked", 10, 10); 
     text("codewords", 1805, 10);
     fill('#0f0');
     textSize(20);
-    textFont(fitFont);
+    textFont(pixFont);
     textAlign(RIGHT, TOP);
     return;
   }
@@ -93,18 +93,18 @@ function applyFontForChar(char, index) {
   } else if (char.toLowerCase() === 'u') {
     textFont(drukFont); // for 'u'
   } else if (char.toLowerCase() === 'r') {
-    textFont(robotoFont); // for 'r'
+    textFont(uchenFont); // for 'r'
   } else if (char.toLowerCase() === 's') {
-    textFont(fitFont); // for 's'
+    textFont(pixFont); // for 's'
   } else if (char.toLowerCase() === 't') {
-    textFont(matrixFont); // for 't'
+    textFont(akzFont); // for 't'
   } else if (char.toLowerCase() === 'y') {
-    textFont(gtAmericaFont); // for 'y'
+    textFont(albasFont); // for 'y'
   } else if (char.toLowerCase() === 'i') {
     if (index === 0) {
-      textFont(timesNewRomanFont); // for 'i'
+      textFont(lemonFont); // for 'i'
     } else {
-      textFont(helveticaFont); // for 'i' 2
+      textFont(misokaFont); // for 'i' 2
     }
   } else {
     textFont(bellFont);
