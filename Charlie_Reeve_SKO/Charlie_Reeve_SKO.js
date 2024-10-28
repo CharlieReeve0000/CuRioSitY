@@ -192,6 +192,7 @@ function setup() {
   textFont(america);
   textSize(18);
   text("NO CLASS", width / 2.05, newHeight + 11130);
+  text("I watched this instead.", width / 2.15, newHeight + 11760);
   
   image(quigley, width / 1.95, newHeight + 11450, 380, 540);
 
