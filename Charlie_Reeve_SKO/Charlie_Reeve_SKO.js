@@ -41,7 +41,6 @@ function setup() {
   createCanvas(1897, 14000);
   background(247, 245, 245);
 
-  // Center the image at the top with adjusted size
   imageMode(CENTER);
   let newWidth = 1400;
   let newHeight = 700;
@@ -50,7 +49,6 @@ function setup() {
   textAlign(CENTER);
   fill(0);
 
-  // "Brief 3 : SKO" text
   textFont(americabold)
   textSize(28)
   text('CHARLIE REEVE', 120, 40);
@@ -63,7 +61,6 @@ function setup() {
   textSize(28);
   text("Brief 3 : SKO", width / 2, newHeight + 140);
 
-  // "Scroll to view more" text
   textFont(america);
   textSize(18);
   text("Scroll to view more...", width / 2, newHeight + 170);
@@ -85,8 +82,7 @@ function setup() {
   text("CLASS 1", width / 2, newHeight + 1230);
   displayParagraph(newHeight + 1300, "For the first class of codewords we were introduced to creative coding as a whole. We looked into popular coders such as JODI or Winnie Soon and what they have provided in the world of web design and online art. In the later session we took our first look at HTML and how some of the basics work; setting up a title, implementing type and understanding how code should be written. To me, the most engaging part was the idea of the ‘Crazy Eights’. This exercise required us to section a piece of paper into 8 and create different layouts for our chosen phrase. We would then have, as homework, to see how close we could get to any of our designs. In terms of an introduction, this was a welcoming task that did not force us to start off in the deep end and pushed for us to learn more outside of class. The phrase that I chose comes from a song that I have been playing on repeat, although we were taught the words “Hello World” are the choice for testing to see if your code is really working.");
 
-  // Display week1.png below class 1
-  image(week1, width / 1.4, newHeight + 1450, 680, 330); // Adjust size and position as necessary
+  image(week1, width / 1.4, newHeight + 1450, 680, 330); 
   image(wingtips, width / 1.4, newHeight + 1800, 680, 330);
 
   textFont(drukwide);
@@ -212,13 +208,12 @@ function setup() {
 
 function draw() {}
 
-// Function to display the paragraph text
 function displayParagraph(yPosition, paragraphText) {
   textAlign(LEFT);
   textWrap(WORD);
   textSize(16);
   textFont(america);
-  let paragraphX = 264; // Set paragraph X position to 264 pixels from the left
+  let paragraphX = 264; 
 
-  text(paragraphText, paragraphX, yPosition, 600); // Paragraph width remains 600 pixels
+  text(paragraphText, paragraphX, yPosition, 600); 
 }
